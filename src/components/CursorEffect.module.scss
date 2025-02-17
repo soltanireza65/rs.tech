@@ -1,0 +1,48 @@
+.cursorDot {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(
+      circle,
+      rgba(16, 185, 129, 0.08) 0%,
+      rgba(16, 185, 129, 0.05) 35%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease-out;
+    mix-blend-mode: screen;
+    backdrop-filter: blur(0.5px);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 4px;
+      height: 4px;
+      background: rgba(16, 185, 129, 0.5);
+      border-radius: 50%;
+      transition: all 0.15s ease-out;
+    }
+  
+    &.interacting {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(
+        circle,
+        rgba(16, 185, 129, 0.12) 0%,
+        rgba(16, 185, 129, 0.08) 35%,
+        transparent 70%
+      );
+  
+      &::after {
+        width: 8px;
+        height: 8px;
+        background: rgba(16, 185, 129, 0.7);
+      }
+    }
+  }

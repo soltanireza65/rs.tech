@@ -1,50 +1,62 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import styles from './CursorEffect.module.scss';
 
 export default function CursorEffect() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorSize, setCursorSize] = useState({ width: 150, height: 150 });
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let mouseTimeout: NodeJS.Timeout;
+    
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
+      setIsVisible(true);
+      
+      // Hide cursor effect after 2 seconds of no movement
+      clearTimeout(mouseTimeout);
+      mouseTimeout = setTimeout(() => {
+        setIsVisible(false);
+      }, 2000);
     };
 
     const handleMouseEnter = () => {
-      setCursorSize({ width: 200, height: 200 });
+      setIsInteracting(true);
     };
 
     const handleMouseLeave = () => {
-      setCursorSize({ width: 150, height: 150 });
+      setIsInteracting(false);
     };
 
     // Add event listeners
-    window.addEventListener("mousemove", handleMouseMove);
-    document.querySelectorAll("a, button, .hover-expand").forEach((element) => {
-      element.addEventListener("mouseenter", handleMouseEnter);
-      element.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener('mousemove', handleMouseMove);
+    document.querySelectorAll('a, button, .hover-expand').forEach(element => {
+      element.addEventListener('mouseenter', handleMouseEnter);
+      element.addEventListener('mouseleave', handleMouseLeave);
     });
 
+    // Cleanup
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      document
-        .querySelectorAll("a, button, .hover-expand")
-        .forEach((element) => {
-          element.removeEventListener("mouseenter", handleMouseEnter);
-          element.removeEventListener("mouseleave", handleMouseLeave);
-        });
+      clearTimeout(mouseTimeout);
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.querySelectorAll('a, button, .hover-expand').forEach(element => {
+        element.removeEventListener('mouseenter', handleMouseEnter);
+        element.removeEventListener('mouseleave', handleMouseLeave);
+      });
     };
   }, []);
 
+  if (!isVisible) return null;
+
   return (
-    <div
-      className="cursor-dot"
+    <div 
+      className={`${styles.cursorDot} ${isInteracting ? styles.interacting : ''}`}
       style={{
         left: `${mousePosition.x}px`,
         top: `${mousePosition.y}px`,
-        width: `${cursorSize.width}px`,
-        height: `${cursorSize.height}px`,
+        opacity: isVisible ? 1 : 0
       }}
     />
   );

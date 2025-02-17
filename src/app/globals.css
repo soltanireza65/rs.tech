@@ -58,3 +58,22 @@
     background-position: 0% 50%;
   }
 }
+
+.card {
+  backdrop-filter: blur(8px);
+  background: linear-gradient(
+    145deg,
+    rgba(17, 17, 23, 0.9),
+    rgba(28, 28, 36, 0.4)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card:hover {
+  background: linear-gradient(
+    145deg,
+    rgba(17, 17, 23, 0.95),
+    rgba(28, 28, 36, 0.5)
+  );
+  border: 1px solid rgba(16, 185, 129, 0.1);
+}

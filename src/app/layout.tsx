@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import CursorEffect from "@/components/CursorEffect";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import AnimatedGrid from "@/components/AnimatedGrid";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +31,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased prevent-select`}
       >
-        {children}
+        <div className="relative min-h-screen bg-gradient-dark text-zinc-100 font-mono overflow-hidden">
+          <AnimatedGrid />
+          <CursorEffect />
+          <div className="relative z-10">
+            {/* Header */}
+            <Header />
+
+            {/* Main Content */}
+            {children}
+
+
+            {/* Footer */}
+            <Footer />
+          </div>
+        </div>
       </body>
     </html>
   );

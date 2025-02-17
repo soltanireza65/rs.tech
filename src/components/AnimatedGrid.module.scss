@@ -1,0 +1,10 @@
+.animated-grid {
+  background-size: 60px 60px;
+  background-image: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.03) 1px,
+    transparent 1px
+  );
+  opacity: 0.3;
+  animation: pulse 8s ease-in-out infinite;
+}

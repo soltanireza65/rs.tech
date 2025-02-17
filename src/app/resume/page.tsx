@@ -1,3 +1,4 @@
+import { experiences } from "@/config/resume.data";
 import { Award, Briefcase, FileText, GraduationCap } from "lucide-react";
 import React from "react";
 
@@ -11,9 +12,12 @@ const Resume = (props: Props) => {
         <div className="card p-8 rounded-lg mb-8">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-3xl font-bold mb-4">John Doe</h1>
-              <p className="text-zinc-400 mb-2">Senior Software Engineer</p>
-              <p className="text-zinc-400">San Francisco, CA</p>
+              <h1 className="text-3xl font-bold mb-4">Reza Soltani</h1>
+              <p className="text-zinc-400 mb-2">
+                Backend Developer | High-Performance Systems & Microservices
+                Specialist
+              </p>
+              <p className="text-zinc-400">Istanbul, Turkey (Remote)</p>
             </div>
             <FileText className="w-8 h-8 text-emerald-500" />
           </div>
@@ -27,33 +31,22 @@ const Resume = (props: Props) => {
           </h2>
 
           <div className="space-y-8">
-            <div className="relative pl-6 border-l border-zinc-800">
-              <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[6.5px] top-1.5"></div>
-              <h3 className="text-lg font-semibold">
-                Senior Backend Engineer
-              </h3>
-              <p className="text-emerald-500 mb-2">
-                Tech Corp • 2020 - Present
-              </p>
-              <ul className="space-y-2 text-zinc-400">
-                <li>• Led development of microservices architecture</li>
-                <li>• Improved system performance by 40%</li>
-                <li>• Mentored junior developers</li>
-              </ul>
-            </div>
-
-            <div className="relative pl-6 border-l border-zinc-800">
-              <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[6.5px] top-1.5"></div>
-              <h3 className="text-lg font-semibold">Backend Developer</h3>
-              <p className="text-emerald-500 mb-2">
-                StartUp Inc • 2018 - 2020
-              </p>
-              <ul className="space-y-2 text-zinc-400">
-                <li>• Developed RESTful APIs</li>
-                <li>• Implemented CI/CD pipelines</li>
-                <li>• Optimized database performance</li>
-              </ul>
-            </div>
+            {experiences.map(
+              ({ achievements, company, period, role, technologies }) => (
+                <div className="relative pl-6 border-l border-zinc-800">
+                  <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[6.5px] top-1.5"></div>
+                  <h3 className="text-lg font-semibold">{role}</h3>
+                  <p className="text-emerald-500 mb-2">
+                    {company} • {period}
+                  </p>
+                  <ul className="space-y-2 text-zinc-400">
+                    {achievements.map((achievement) => (
+                      <li>• {achievement}</li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            )}
           </div>
         </section>
 

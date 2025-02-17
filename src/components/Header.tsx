@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 type Props = {};
@@ -10,14 +11,17 @@ const Header = (props: Props) => {
           <h1 className="text-2xl font-bold tracking-tight hover-expand">
             <span className="text-emerald-500">&gt; </span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-emerald-700">
-              <a href="/">
-                Software Engineer
-              </a>
+              <Link href="/">Software Engineer</Link>
             </span>
           </h1>
           <div className="flex items-center gap-6">
             {/* <a href="#expertise" className="text-zinc-400 hover:text-emerald-500 transition-colors">Expertise</a> */}
-            <a href="/resume" className="text-zinc-400 hover:text-emerald-500 transition-colors">Resume</a>
+            <Link
+              href="/resume"
+              className="text-zinc-400 hover:text-emerald-500 transition-colors"
+            >
+              Resume
+            </Link>
             {/* <a href="#contact" className="text-zinc-400 hover:text-emerald-500 transition-colors">Contact</a> */}
           </div>
         </div>

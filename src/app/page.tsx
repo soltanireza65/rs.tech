@@ -1,4 +1,6 @@
+import Card from "@/components/Card";
 import {
+  Code,
   Code2,
   Container,
   Database,
@@ -13,44 +15,50 @@ const Home = (props: Props) => {
   return (
     <main className="container mx-auto px-4 py-12">
       {/* Tech Stack Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-        <div className="bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-zinc-800/30 transition-all duration-300 hover:border-emerald-500/30 hover:bg-black/50 hover-expand">
-          <div className="flex items-center gap-3 mb-4">
-            <Terminal className="w-6 h-6 text-emerald-500" />
-            <h2 className="text-lg font-semibold">Backend</h2>
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+        <Card
+          title="Frontent"
+          iconComponent={<Code2 className="w-6 h-6 text-emerald-500" />}
+        >
+          <ul className="space-y-2 text-zinc-300">
+            <li>• React</li>
+            <li>• Next.JS</li>
+          </ul>
+        </Card>
+        <Card
+          title="Backend"
+          iconComponent={<Terminal className="w-6 h-6 text-emerald-500" />}
+        >
           <ul className="space-y-2 text-zinc-300">
             <li>• Node.JS</li>
             <li>• Nest.JS</li>
             <li>• TypeScript</li>
           </ul>
-        </div>
+        </Card>
 
-        <div className="bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-zinc-800/30 transition-all duration-300 hover:border-emerald-500/30 hover:bg-black/50 hover-expand">
-          <div className="flex items-center gap-3 mb-4">
-            <Database className="w-6 h-6 text-emerald-500" />
-            <h2 className="text-lg font-semibold">Databases</h2>
-          </div>
+        <Card
+          title="Databases"
+          iconComponent={<Database className="w-6 h-6 text-emerald-500" />}
+        >
           <ul className="space-y-2 text-zinc-300">
             <li>• PostgreSQL</li>
             <li>• MongoDB</li>
           </ul>
-        </div>
-
-        <div className="bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-zinc-800/30 transition-all duration-300 hover:border-emerald-500/30 hover:bg-black/50 hover-expand">
-          <div className="flex items-center gap-3 mb-4">
-            <Code2 className="w-6 h-6 text-emerald-500" />
-            <h2 className="text-lg font-semibold">Architecture</h2>
-          </div>
+        </Card>
+        <Card
+          title="Architecture"
+          iconComponent={<Code2 className="w-6 h-6 text-emerald-500" />}
+        >
           <ul className="space-y-2 text-zinc-300">
             <li>• CQRS</li>
             <li>• DDD</li>
             <li>• TDD</li>
           </ul>
-        </div>
+        </Card>
       </div>
 
       {/* Infrastructure Section */}
+
       <div className="bg-black/40 backdrop-blur-sm p-8 rounded-lg border border-zinc-800/30 transition-all duration-300 hover:border-emerald-500/30 hover:bg-black/50 mb-16 hover-expand">
         <h2 className="text-xl font-semibold mb-6 flex items-center gap-3">
           <Server className="w-6 h-6 text-emerald-500" />
@@ -62,8 +70,8 @@ const Home = (props: Props) => {
             <div>
               <h3 className="font-semibold mb-2">Containerization</h3>
               <p className="text-zinc-400">
-                Expert in Docker containerization and Kubernetes
-                orchestration for scalable microservices architecture.
+                Expert in Docker containerization and Kubernetes orchestration
+                for scalable microservices architecture.
               </p>
             </div>
           </div>
@@ -72,8 +80,8 @@ const Home = (props: Props) => {
             <div>
               <h3 className="font-semibold mb-2">CI/CD</h3>
               <p className="text-zinc-400">
-                Implementation of robust continuous integration and
-                deployment pipelines for automated testing and delivery.
+                Implementation of robust continuous integration and deployment
+                pipelines for automated testing and delivery.
               </p>
             </div>
           </div>
